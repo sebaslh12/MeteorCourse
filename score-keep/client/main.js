@@ -10,8 +10,24 @@ const renderPlayers = (players) => {
         return (
             <p key={id}>
                 {name} has {score} point(s)
-                <button onClick={() => Players.remove({ _id: id })}>X</button>
-            </p>
+                <button onClick={() => {
+                    Players.update(id,
+                        {
+                            $inc: {
+                                score: 1
+                            }
+                        })
+                }}>+1</button>
+                <button onClick={() => {
+                    Players.update(id,
+                        {
+                            $inc: {
+                                score: -1
+                            }
+                        })
+                }}>-1</button>
+                <button onClick={() => Players.remove(id)}>X</button>
+            </p >
         )
     })
 }
