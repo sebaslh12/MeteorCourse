@@ -13,18 +13,18 @@ export default class Player extends React.Component {
                     Players.update(id,
                         {
                             $inc: {
-                                score: 1
-                            }
-                        })
-                }}>+1</button>
-                <button onClick={() => {
-                    Players.update(id,
-                        {
-                            $inc: {
                                 score: -1
                             }
                         })
                 }}>-1</button>
+                <button onClick={() => {
+                    Players.update(id,
+                        {
+                            $inc: {
+                                score: 1
+                            }
+                        })
+                }}>+1</button>
                 <button onClick={() => Players.remove(id)}>X</button>
             </p >
         )

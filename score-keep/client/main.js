@@ -9,7 +9,7 @@ import App from '../imports/ui/App'
 Meteor.startup(() => {
 
     Tracker.autorun(() => {
-        let players = Players.find().fetch()
+        let players = Players.find({}, { sort: { score: -1 } }).fetch()
         const title = 'Score Keep'
         let jsxContainer = document.querySelector('#app')
         ReactDOM.render(<App title={title} players={players} />, jsxContainer)
