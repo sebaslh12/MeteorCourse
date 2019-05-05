@@ -11,7 +11,7 @@ export default class Player extends React.Component {
                 <p>
                     {name} has {score} point(s)
                 </p>
-                <button onClick={() => {
+                <button className="button button--round" onClick={() => {
                     Players.update(id,
                         {
                             $inc: {
@@ -19,7 +19,7 @@ export default class Player extends React.Component {
                             }
                         })
                 }}>-1</button>
-                <button onClick={() => {
+                <button className="button button--round" onClick={() => {
                     Players.update(id,
                         {
                             $inc: {
@@ -27,7 +27,7 @@ export default class Player extends React.Component {
                             }
                         })
                 }}>+1</button>
-                <button onClick={() => Players.remove(id)}>X</button>
+                <button className="button button--round" onClick={() => Players.remove(id)}>X</button>
             </div>
         )
     }
