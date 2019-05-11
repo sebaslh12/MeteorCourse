@@ -2,3 +2,10 @@
   background: #e35557;
   color: white;
 }
+// BEM Block, Element, Modifier
+
+// Element - block-name__element-name
+.title-bar__subtitle {
+  font-size: 1.3rem;
+  font-weight: 400
+}
