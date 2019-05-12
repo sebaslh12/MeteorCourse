@@ -1,10 +1,9 @@
-import React from 'react';
+import React from 'react'
 import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
+import { render } from 'react-dom'
 
-import Signup from '../imports/ui/Signup'
-import Link from '../imports/ui/Link'
+import App from '../imports/ui/App'
 
 Meteor.startup(() => {
-  render(<Link />, document.getElementById('app'));
-});
+  render(<App />, document.getElementById('app'))
+})
