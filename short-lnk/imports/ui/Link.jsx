@@ -1,4 +1,5 @@
 import React from 'react'
+import { Accounts } from 'meteor/accounts-base'
 
 class Link extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class Link extends React.Component {
     }
 
     onLogout() {
-        this.props.history.push('/')
+        Accounts.logout()
     }
 
     render() {
