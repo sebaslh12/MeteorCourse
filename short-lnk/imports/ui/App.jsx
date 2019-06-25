@@ -1,6 +1,8 @@
 import React from 'react'
 import { Tracker } from 'meteor/tracker'
+
 import { routes, onAuthChange } from '../routes/routes'
+import { Links } from '../api/links';
 
 Tracker.autorun(() => {
     const isAuthenticated = !!Meteor.userId()
