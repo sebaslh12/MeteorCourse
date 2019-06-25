@@ -5,8 +5,7 @@ import SimpleSchema from 'simpl-schema';
 Meteor.startup(() => {
     Accounts.validateNewUser((user) => {
         const email = user.emails[0].address;
-        console.log('wat');
-
+        console.log(user)
         try {
             new SimpleSchema({
                 email: {
@@ -17,6 +16,6 @@ Meteor.startup(() => {
         } catch (e) {
             throw new Meteor.Error(400, e.message)
         }
+        return true;
     });
-
 });
