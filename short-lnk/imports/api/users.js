@@ -5,7 +5,6 @@ import SimpleSchema from 'simpl-schema';
 
 Accounts.validateNewUser((user) => {
     const email = user.emails[0].address;
-    console.log(user)
     try {
         new SimpleSchema({
             email: {
