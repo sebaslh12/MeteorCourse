@@ -20,6 +20,7 @@ class Signup extends React.Component {
 
         Accounts.createUser({ email, password }, (err) => {
             if (err) {
+                console.log(err)
                 this.setState({
                     error: err.reason
                 })
