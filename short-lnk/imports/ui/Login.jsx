@@ -39,7 +39,7 @@ class Login extends React.Component {
                     <input type="password" ref="password" name="password" placeholder="password" />
                     <button>Login</button>
                 </form>
-                <Link to="/signup">Have an account? Create one</Link>
+                <Link to="/signup">Don't have an account? Create one</Link>
             </div>
         )
     }
