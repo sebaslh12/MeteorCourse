@@ -8,3 +8,16 @@ if (Meteor.isServer) {
         return Links.find({ userId: this.userId });
     })
 }
+
+
+Meteor.methods({
+    'links.insert'(url) {
+        if (!this.userId)
+            throw new Meteor.Error('401')
+
+        Links.insert({
+            userId: this.userId,
+            url
+        })
+    }
+})
