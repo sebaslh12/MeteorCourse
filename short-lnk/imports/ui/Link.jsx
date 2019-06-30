@@ -1,40 +1,15 @@
 import React from 'react'
-import { Accounts } from 'meteor/accounts-base'
-import { Meteor } from 'meteor/meteor';
 
-import { Links } from '../api/links';
 import LinksList from './LinksList'
+import PrivateHeader from './PrivateHeader'
+import AddLink from './AddLink';
 class Link extends React.Component {
-    constructor(props) {
-        super(props)
-        this.onLogout = this.onLogout.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-    }
-
-    onLogout() {
-        Accounts.logout()
-    }
-
-    onSubmit(e) {
-        e.preventDefault()
-        const url = this.refs.url.value.trim();
-        if (url) {
-            Meteor.call('links.insert', url)
-            this.refs.url.value = ''
-        }
-    }
-
     render() {
         return (
             <div>
-                <h1>Links</h1>
-                <button onClick={this.onLogout}>Logout</button>
+                <PrivateHeader title="Your Links" />
                 <LinksList />
-                <p>Add link</p>
-                <form onSubmit={(this.onSubmit)}>
-                    <input type="text" ref="url" placeholder="URL" />
-                    <button>Add Link</button>
-                </form>
+                <AddLink />
             </div>
         )
     }
