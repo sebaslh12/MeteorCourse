@@ -26,7 +26,23 @@ Meteor.methods({
         Links.insert({
             _id: shortid.generate(),
             userId: this.userId,
-            url
+            url,
+            visible: true
         })
+    },
+    'links.setVisibility'(_id, visible) {
+        if (!this.userId)
+            throw new Meteor.Error('401')
+        new SimpleSchema({
+            _id: {
+                type: String,
+                min: 1
+            },
+            visible: {
+                type: Boolean
+            }
+        }).validate({ _id, visible })
+
+        Links.update({ _id, userId: this.userId }, { $set: { visible } })
     }
 })
