@@ -4,7 +4,7 @@ $grey: #dddddd;
 
 // Spacing
 $space: 1.4rem;
-
+$site-max-width: 50rem;
 
 // Font sizes
 $base-font-size: 1.4rem;
@@ -16,10 +16,14 @@ $input-spacing: 1rem;
 $boxed-view-overlay-bg: $grey;
 $boxed-view-bg: white;
 
-//Button
+// Button
 $button-bg: $brand-primary;
 $button-color: white;
 $button-pill-color: $brand-primary;
 $button-secondary-bg: #f9f9f9;
 $button-secondary-border-color: $grey;
 $button-secondary-color: #777777;
+
+// Header
+$header-bg: $brand-primary;
+$header-color: white;
