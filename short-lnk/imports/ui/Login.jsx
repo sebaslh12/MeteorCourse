@@ -38,7 +38,7 @@ class Login extends React.Component {
 					<form className="boxed-view__form" onSubmit={this.onSubmit} noValidate>
 						<input type="email" ref="email" name="email" placeholder="E-mail" />
 						<input type="password" ref="password" name="password" placeholder="password" />
-						<button>Login</button>
+						<button className="button">Login</button>
 					</form>
 					<Link to="/signup">Don't have an account? Create one</Link>
 				</div>
