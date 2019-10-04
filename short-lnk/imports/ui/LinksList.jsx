@@ -40,8 +40,8 @@ export default class LinksList extends React.Component {
 			})
 		else
 			return (
-				<div>
-					<p>There are no links</p>
+				<div className="item">
+					<p className="item__status-message">There are no links</p>
 				</div>
 			)
 	}
@@ -49,7 +49,6 @@ export default class LinksList extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>Links List</p>
 				<div>
 					{this.renderLinksListItems()}
 				</div>
