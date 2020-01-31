@@ -52,7 +52,7 @@ Meteor.methods({
 			}
 		}).validate({ _id, ...updates });
 
-		Notes.update({ _id }, {
+		Notes.update({ _id, userId: this.userId }, {
 			$set: {
 				updatedAt: moment().valueOf(),
 				...updates

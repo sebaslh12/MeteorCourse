@@ -64,6 +64,25 @@ if (Meteor.isServer) {
 				Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId }, [noteOne._id, { title, name: 'Sebas' }]);
 				const updatedNote = Notes.findOne({ _id: noteOne._id });
 			}).toThrow();
-		})
+		});
+
+		it('it should not update note if user was not creator', function () {
+			const title = 'this is a new title';
+			Meteor.server.method_handlers['notes.update'].apply({ userId: 'nonExistantUser' }, [noteOne._id, { title }]);
+			const updatedNote = Notes.findOne({ _id: noteOne._id });
+			expect(updatedNote).toMatchObject(noteOne);
+		});
+
+		it('should not update note if unauthenticated', function () {
+			expect(() => {
+				Meteor.server.method_handlers['notes.update'].apply({}, [noteOne._id]);
+			}).toThrow();
+		});
+
+		it('should not update note if invalid _id', function () {
+			expect(() => {
+				Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId }, []);
+			}).toThrow();
+		});
 	});
 }
