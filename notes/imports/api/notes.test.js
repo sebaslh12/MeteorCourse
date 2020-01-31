@@ -12,10 +12,18 @@ if (Meteor.isServer) {
 			updatedAt: 0,
 			userId: 'testUserId1'
 		};
+		const noteTwo = {
+			_id: 'testNoteId2',
+			title: 'My title 2',
+			body: 'My body second',
+			updatedAt: 0,
+			userId: 'testUserId2'
+		};
 
 		beforeEach(function () {
 			Notes.remove({});
 			Notes.insert(noteOne);
+			Notes.insert(noteTwo);
 		})
 
 		it('should insert new note', function () {
@@ -83,6 +91,17 @@ if (Meteor.isServer) {
 			expect(() => {
 				Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId }, []);
 			}).toThrow();
+		});
+
+		it('should return a users notes', function () {
+			const notes = Meteor.server.publish_handlers.notes.apply({ userId: noteOne.userId }).fetch();
+			expect(notes.length).toBe(1);
+			expect(notes[0]).toMatchObject(noteOne);
+		});
+
+		it('should return 0 notes for user has no notes', function () {
+			const notes = Meteor.server.publish_handlers.notes.apply({ userId: 'nonExistantUser' }).fetch();
+			expect(notes.length).toBe(0);
 		});
 	});
 }
